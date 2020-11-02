@@ -20,7 +20,6 @@ export async function add() {
   t2.estimatedArrivalDate = new Date('09/11/2030');
   t2.agency = agency;
 
-  // Act
   context.agencies.add(agency);
   await context.saveChanges();
 
@@ -39,12 +38,14 @@ export async function add() {
     id: t2.id
   });
 
+  context.dispose();
+
   console.log('Added agency');
-  console.table(dbAgency);
+  console.table([dbAgency]);
   console.log('Added trip 1');
-  console.table(dbT1);
+  console.table([dbT1]);
   console.log('Added trip 2');
-  console.table(dbT2);
+  console.table([dbT2]);
 }
 
 add();

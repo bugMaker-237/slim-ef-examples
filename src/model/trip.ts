@@ -14,16 +14,16 @@ export class Trip {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @ManyToOne(() => Agency, c => c.trips)
+  @ManyToOne(() => Agency, c => c.trips, { onDelete: 'CASCADE', cascade: true })
   agency: Agency;
 
   @Column()
   agencyId: number;
 
-  @Column()
+  @Column({ type: 'datetime' })
   departureDate: Date;
 
-  @Column({ nullable: true })
+  @Column({ nullable: true, type: 'datetime' })
   estimatedArrivalDate: Date;
 
   @OneToMany(() => Person, p => p.trip)
